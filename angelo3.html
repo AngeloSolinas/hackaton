@@ -1,0 +1,72 @@
+<!DOCTYPE HTML SYSTEM>
+<html>
+<head>
+	<title>Profiel generator</title>
+	<style type="text/css">
+	body {font-family:Verdana, Arial, Helvetica, sans-serif;}
+	th {text-align:left; vertical-align:top}
+	</style> 
+</head>
+
+<body>
+
+<script type="text/javascript">
+
+function updateProfiel() {
+	document.getElementById('mijnnaam').innerHTML = document.getElementById('nieuwenaam').value;
+	document.getElementById('mijnplaats').innerHTML = document.getElementById('nieuweplaats').value;
+	document.getElementById('vrijetekst').innerHTML = document.getElementById('vrijeinvoer').value;
+	
+	if (document.getElementById('vrijetekst').innerHTML.length < 50) {
+		alert("De tekst invoer is te kort.");
+	}
+	
+	if (document.getElementById('vrijetekst').innerHTML.length > 1500) {
+		alert("De tekst invoer is te lang.");
+	}
+
+	
+	if (document.getElementById('cbhtml').checked && document.getElementById('cbcss').checked && document.getElementById('cbjavascript').checked && document.getElementById('cbphp').checked) {
+		document.getElementById('typedeveloper').innerHTML = 'Ik ben een fullstack developer.';
+	}
+	else if (document.getElementById('cbhtml').checked && document.getElementById('cbcss').checked) {
+		document.getElementById('typedeveloper').innerHTML = 'Ik ben een front-end developer.';
+	}
+	else if (document.getElementById('cbphp').checked) {
+		document.getElementById('typedeveloper').innerHTML = 'Ik ben een backend developer.';
+	}
+	else {
+		document.getElementById('typedeveloper').innerHTML = '';
+	}
+}
+
+
+</script>
+
+
+<form onsubmit="updateProfiel(); return false;">
+
+<table border=0 cellpadding=2 cellspacing=0 summary="">
+<tr><th>Mijn naam:</th><td><input id="nieuwenaam" type=text></input></td></tr>
+<tr><th>Ik wil werken in:</th><td><input id="nieuweplaats" type="text"></input></td></tr>
+<tr><th>Vrije invoer:</th><td><textarea id="vrijeinvoer" cols="30" rows="5"></textarea></td></tr>
+</table>
+
+<p><input id="cbhtml" type="checkbox">html<br>
+<input id="cbcss" type="checkbox">css<br>
+<input id="cbjavascript" type="checkbox">javascript<br>
+<input id="cbphp" type="checkbox">php</p>
+
+<p><input type=submit></p>
+
+</form>
+
+<p>Mijn naam is <b id="mijnnaam">Piet</b> en ik wil werken in <b id="mijnplaats">Emmen</b></p>
+
+<p><i id="vrijetekst">Nog geen tekst.</i></p>
+
+<p id="typedeveloper"></p>
+
+
+</body>
+</html>
